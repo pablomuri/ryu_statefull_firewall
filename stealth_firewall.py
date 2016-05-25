@@ -22,8 +22,7 @@ PORT_WEB = 80
 
 HOST_WEB = "10.0.0.10"
 
-FW_OUTPORT = 2
-FW_INPORTS = [1,3]
+FW_INPORTS = [1,2]
 
 class Firewall(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_0.OFP_VERSION]
@@ -92,8 +91,8 @@ class Firewall(app_manager.RyuApp):
                     if msg.in_port in FW_INPORTS:
                         self.add_match_state(out_port, match)
 
-                    #self.add_flow(datapath, match, out_port, 5, 0)
-                    #self.forwardPacket(msg, out_port)
+                    self.add_flow(datapath, match, out_port, 5, 0)
+                    self.forwardPacket(msg, out_port)
                 else :
                     #DROP packets
                     #add flow and packet_out with no actions
