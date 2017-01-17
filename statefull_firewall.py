@@ -1,5 +1,5 @@
 """
-An OpenFlow 1.0  L2 stealth firewall implementation.
+An OpenFlow 1.0  L2 statefull firewall implementation.
 """
 
 from ryu.base import app_manager
